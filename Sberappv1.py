@@ -1,35 +1,13 @@
 #!flask/bin/python
-from flask import Flask, jsonify
+from flask import Flask, render_template
 
 
-app = Flask(__name__)
+app = Flask(__name__,static_folder="static")
 
-Examinations = [
-    {        
-	
-        'subject': 'OS',
-	'exam grade':'excellent'
-    },
-    {
-        
-        'subject': 'Computational Mathematics',
-	'exam grade':'good'
-    },
-	{        
-	
-        'subject': 'electrical engineering',
-	'exam grade':'good'
-    },
-    {
-        
-        'subject': 'computer and peripherals',
-	'exam grade':'excellent'
-    }
-]
 
 @app.route('/VIp21/Muravev_Andrey_Vladimirovich', methods=['GET'])
 def get_Examinations():
-    return jsonify({'Examinations': Examinations})
+    return render_template("index.html")
 
 if __name__ == '__main__':
     app.run(debug=True)
